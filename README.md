@@ -4,7 +4,7 @@ Feedback form for two type of users.
 
 1. For the end user.
  * Ability to ask questions to support and also to respond on their answers. (Email required in order to contact user)
- * Anonymous reviews.
+ * Leave anonymous reviews.
 
 2. For the admin user.
  * Authentication required.
