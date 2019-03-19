@@ -12,6 +12,8 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
 Shoulda::Matchers.configure do |config|
