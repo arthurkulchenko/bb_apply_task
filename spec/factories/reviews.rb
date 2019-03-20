@@ -1,6 +1,11 @@
 FactoryBot.define do
   factory :review do
-    parent { "MyString" }
-    post { "MyString" }
+    title   {'some title'}
+    content {'contnet'}
+  end
+
+  factory :empty_review, class: Review do
+    title   {nil}
+    content {nil}
   end
 end
