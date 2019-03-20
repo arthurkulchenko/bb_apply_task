@@ -1,3 +1,3 @@
-class Question < ApplicationRecord
+class Question < Post
   validates :title, :content, presence: true
 end

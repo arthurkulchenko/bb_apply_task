@@ -9,6 +9,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 require 'rspec/rails'
 require 'spec_helper'
+require 'faker'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'devise'
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -22,7 +22,6 @@ RSpec.describe ReviewsController, type: :controller do
 
     context 'review created' do
       let(:request) { post :create, params: { review: attributes_for(:review) } }
-      # let(:review){ create(:review) }
 
       it "eventually it creates new review" do
         expect{ request }.to change(Review, :count).by(1)
