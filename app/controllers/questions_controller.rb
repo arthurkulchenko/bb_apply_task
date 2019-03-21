@@ -3,13 +3,17 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def new
-    @question = Question.new()
+  def show
+    @question = Question.find(params[:id])
   end
 
   def create
     @question = Question.new(question_params)
-    @question.save unless @question.errors.any?
+    if @question.save
+      redirect_to question_path(@question)
+    else
+      render :new, notice: @question.errors.full_messages
+    end
   end
 
   private

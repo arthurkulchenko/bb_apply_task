@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BbApplyTask</title>
+    <title>🔥BbApplyTask🔥</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+  	<div id='app'>
+      <nav>
+        <navigation></navigation>
+      </nav>
+      <%= yield %>
+    </div>
   </body>
+  <%= javascript_pack_tag 'application' %>
 </html>

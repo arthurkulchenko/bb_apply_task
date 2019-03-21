@@ -1,2 +1,6 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<new-question></new-question>
+<hr>
+<div class="marged-layout" style="width: 900px; height: auto; margin: auto; text-align: center">
+	<h3>Question List</h3>
+	<%= render @questions.by_latest %>
+</div>

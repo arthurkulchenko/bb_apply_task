@@ -3,12 +3,12 @@ TODO list
 Feedback form for two type of users.
 
 1. For the end user.
- * Ability to ask a questions to support
+ * ✅ ~Ability to ask a questions to support.~
  * Ability to respond on supports answers. (Email required in order to contact user)
- * Ability to leave anonymous reviews.
+ * ✅ ~Ability to leave anonymous reviews.~
 
 2. For the admin user.
- * Authentication required.
+ * ✅ ~Authentication required.~
  * Email notification in case new question to support appears.
  * Dashboard
    - Unreaded messages interface notification.
