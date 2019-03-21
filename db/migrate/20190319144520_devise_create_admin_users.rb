@@ -1,14 +1,16 @@
 class DeviseCreateAdminUsers < ActiveRecord::Migration[5.2]
 
-
   def up
     execute <<-SQL
     CREATE TABLE admin_users (
+      id                     serial PRIMARY KEY,
       encrypted_password     varchar(255),
       reset_password_token   varchar(255),
       reset_password_sent_at timestamp with time zone,
       remember_created_at    timestamp with time zone
     ) INHERITS (users);
+
+
     SQL
 
     add_index :admin_users, :email,                unique: true
@@ -18,6 +20,10 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration[5.2]
   def down
     drop_table :admin_users
   end
+
+  # CREATE TRIGGER check_uniquiness_admin_users
+  #   BEFORE INSERT ON admin_users
+  #   FOR EACH ROW EXECUTE PROCEDURE check_for_user_dups();
 
   # def change
   #   create_table :admin_users do |t|

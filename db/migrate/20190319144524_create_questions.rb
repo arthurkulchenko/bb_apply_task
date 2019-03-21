@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       require_help boolean default false
     ) INHERITS(posts);
     SQL
-    add_reference :questions, :user, foreign_key: true, index: true
+    add_reference :questions, :plain_user, foreign_key: true, index: true
   end
 
   def down

@@ -1,5 +1,5 @@
-class CreatePlainUsers < ActiveRecord::Migration[5.2]
-  def change
+class AddCheckUserIdFunction < ActiveRecord::Migration[5.2]
+  def reversible
     execute <<-SQL
     CREATE FUNCTION check_for_user_dups()
     RETURNS trigger AS

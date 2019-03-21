@@ -2,6 +2,7 @@ class CreatePlainUsers < ActiveRecord::Migration[5.2]
   def up
     execute <<-SQL
     CREATE TABLE plain_users (
+      id         serial PRIMARY KEY,
       interests  text
     ) INHERITS (users);
     SQL

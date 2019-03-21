@@ -1,6 +1,6 @@
 class Question < Post
   validates :title, :content, presence: true
-  belongs_to :user
+  belongs_to :plain_user
   has_many :replies
 
   scope :by_latest,-> { order(created_at: :desc) }
