@@ -1,6 +1,6 @@
-<new-question></new-question>
+<new-question errors="<%= @errors %>"></new-question>
 <hr>
 <div class="marged-layout" style="width: 900px; height: auto; margin: auto; text-align: center">
 	<h3>Question List</h3>
-	<%= render @questions.by_latest %>
+	<%= render @questions.by_latest, locals: { action_button: true} %>
 </div>

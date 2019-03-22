@@ -8,17 +8,31 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
-    if @question.save
+    @questions = Question.all
+
+    @question = Question.new(processed_params(question_params))
+    if @question.save!
       redirect_to question_path(@question)
     else
-      render :new, notice: @question.errors.full_messages
+      @errors = @question.errors.full_messages
+      render "index"
     end
   end
 
   private
 
+  def processed_params params
+    @email = params.delete(:email)
+    @user = if PlainUser.find_by(email: @email)
+      PlainUser.find_by(email: @email)
+    else
+      PlainUser.create(email: @email)
+    end
+    params[:plain_user_id] = @user.id
+    params
+  end
+
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :email)
   end
 end

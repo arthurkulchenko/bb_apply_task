@@ -19,10 +19,7 @@
 		  'content',
           'date',
 		],
-		data(){
-			return{
-			}
-		}
+		data(){return{}}
 	}
 </script>
 <style type="text/css">

@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+
+en:
+  activerecord:
+    attributes:
+      question:
+        plain_user: "Email"
+

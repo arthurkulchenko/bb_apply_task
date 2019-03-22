@@ -1,5 +1,9 @@
 <template>
   <div class="new-question-form">
+    <!-- <b-alert variant="danger" dismissible v-model="showDismissibleAlert"> -->
+   <b-alert variant="danger" dismissible v-if="this.errors != ''">
+      {{errors}}
+   </b-alert>
    <b-form @submit="onSubmit" 
            @reset="onReset" 
            ref="form" 
@@ -18,6 +22,14 @@
           name="question[title]"
           required
           placeholder="Enter title" />
+      </b-form-group>
+
+      <b-form-input
+          id="Input"
+          v-model="form.email"
+          name="question[email]"
+          v-show="false" />
+
       </b-form-group>
       
       <b-form-group>
@@ -45,40 +57,61 @@
         <b-button type="reset" variant="danger">Reset</b-button>
       </div>
     </b-form>
+      <b-modal
+        id="modalPrevent"
+        ref="modalEmail"
+        title="Submit your email"
+        @ok="emailModalOkay"
+        @shown="clearName">
+        <form @submit.stop.prevent="handleSubmit">
+          <b-form-input type="text" placeholder="Enter your email" v-model="modalEmail" />
+        </form>
+      </b-modal>
   </div>
 </template>
 <script type="text/javascript">
 	export default {
+    mounted(){},
+    props:{
+      errors: String,
+    },
     data() {
       return {
+        modalEmail: '',
         form: {
           title: '',
           content: '',
           csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          email: this.$session.get('email'),
         },
-        // show: true,
-        // authenticity_token
+        showDismissibleAlert: true,
       }
     },
     methods: {
       onSubmit(evt) {
       	evt.preventDefault()
-        this.$refs.form.submit()
-        // alert(
-        // 	   JSON.stringify({
-        // 	   	                question: this.form,
-        // 	   	                csrf: this.csrf
-        // 	   	              })
-        // 	 )
+        if ( this.$session.get('email') != undefined){
+          this.form.email = this.$session.get('email')
+          this.$refs.form.submit()
+        }else{
+          this.form.email = ''
+          this.$refs.modalEmail.show()
+        }
       },
       onReset(evt) {
         evt.preventDefault()
         this.form.title = ''
         this.form.content = ''
-        // this.$nextTick(() => {
-        //   this.show = true
-        // })
-      }
+      },
+      emailModalOkay(){
+        this.form.email = this.modalEmail
+        this.$session.set("email", this.modalEmail)
+        if (this.form.title != '' && this.form.content != '' && this.form.email != ''){
+          this.$refs.form.submit()
+        }
+      },
+      clearName(){},
+      handleSubmit(){},
     }
   }
 </script>

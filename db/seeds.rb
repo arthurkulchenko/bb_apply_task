@@ -22,12 +22,25 @@ end
 
 5.times do
   PlainUser.create(
-    name: Faker::TvShows::HowIMetYourMother.character,
+    title: Faker::TvShows::HowIMetYourMother.character,
     email: Faker::Internet.email
+  )
+end
+
+3.times do
+  PlainUser.create(
+    title: Faker::TvShows::HowIMetYourMother.character
   )
 end
 
 PlainUser.all.each do |user|
   @quote = Faker::Quotes::Shakespeare.hamlet_quote
-  Question.create(plain_user_id: user, title: "#{@quote.slice(0..12)}...", content: @quote)
+  Question.create(plain_user: user, title: "#{@quote.slice(0..12)}...", content: @quote)
+  @quote = Faker::Quotes::Shakespeare.hamlet_quote
+  Question.create(plain_user: user, title: "#{@quote.slice(0..12)}...", content: @quote)
+end
+
+PlainUser.where(email: nil).each do |user|
+  @quote = Faker::Quotes::Shakespeare.hamlet_quote
+  Question.create(plain_user: user, title: "#{@quote.slice(0..12)}...", content: @quote)
 end

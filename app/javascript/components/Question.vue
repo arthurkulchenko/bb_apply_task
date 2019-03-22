@@ -10,7 +10,10 @@
         </b-card-text>
         <p id="replies-paragraph">replies: <span id="replies">{{replies}}</span></p>
         <p id="date">{{date}}</p>
-        <b-button :href="`/questions/${id}`" variant="primary">Show more...</b-button>
+        <b-button :href="`/questions/${id}`" 
+                  variant="primary">
+                Show more...
+        </b-button>
       </b-card>
     </div>
 </template>
@@ -23,11 +26,9 @@
 		  content: String,
           date: String,
           replies: String,
+          show_button: Boolean,
 		},
-		data(){
-			return{
-			}
-		}
+		data(){return{}}
 	}
 </script>
 <style type="text/css">

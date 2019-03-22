@@ -1,6 +1,6 @@
 class CreateUser < ActiveRecord::Migration[5.2]
 
-  # def up
+  # def change
   #   create_table :users do |t|
   #     t.string :name
   #     t.string :email
@@ -8,23 +8,23 @@ class CreateUser < ActiveRecord::Migration[5.2]
   #   end
   # end
 
-  def up
-    execute <<-SQL
-    CREATE TABLE users (
+  # def up
+  #   execute <<-SQL
+  #   CREATE TABLE users (
 
-      email      varchar(255),
-      name       varchar(255),
-      created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-      updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
-    )
-    SQL
+  #     email      varchar(255),
+  #     name       varchar(255),
+  #     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  #     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+  #   )
+  #   SQL
 
-  end
+  # end
 
-  def down
-    execute <<-SQL
-    DROP TABLE users CASCADE;
-    SQL
-  end
+  # def down
+  #   execute <<-SQL
+  #   DROP TABLE users CASCADE;
+  #   SQL
+  # end
 
 end
