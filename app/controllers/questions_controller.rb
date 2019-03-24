@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @replies = @question.replies
   end
 
   def create
@@ -23,12 +24,14 @@ class QuestionsController < ApplicationController
 
   def processed_params params
     @email = params.delete(:email)
+    # TODO FindOrCreateNewPlainUser.new(@email)
     @user = if PlainUser.find_by(email: @email)
       PlainUser.find_by(email: @email)
     else
       PlainUser.create(email: @email)
     end
     params[:plain_user_id] = @user.id
+
     params
   end
 

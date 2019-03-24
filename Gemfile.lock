@@ -279,6 +279,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  formtastic
   jbuilder (~> 2.5)
   letter_opener
   listen (>= 3.0.5, < 3.2)

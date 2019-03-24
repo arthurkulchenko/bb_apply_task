@@ -13,6 +13,8 @@ import NewReview   from '../components/NewReview'
 import Review      from '../components/Review'
 import Question    from '../components/Question'
 import NewQuestion from '../components/NewQuestion'
+import NewReply    from '../components/NewReply'
+import Reply       from '../components/Reply'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
@@ -25,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     	          'review':       Review,
     	          'question':     Question,
     	          'new-question': NewQuestion,
+                  'new-reply':    NewReply,
+                  'reply':        Reply,
                 },
   }).$mount('#app')
 })

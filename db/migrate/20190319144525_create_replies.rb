@@ -14,7 +14,7 @@ class CreateReplies < ActiveRecord::Migration[5.2]
     create_table :replies do |t|
       t.text       :content
       t.belongs_to :question, foreign_key: true, index: true
-      t.belongs_to :user, polimorphic: true
+      t.belongs_to :user, polymorphic: true
       t.string     :user_type
       t.timestamps null: false
     end

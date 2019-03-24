@@ -1,7 +1,6 @@
 FactoryBot.define do
-  sequence(:email) { |n| "user.number-#{n+n}@example.com" }
   factory :admin_user do
-    email
-    # encrypted_password '12345678'
+    email              { Faker::Internet.email }
+    encrypted_password { Faker::Crypto.md5 }
   end
 end

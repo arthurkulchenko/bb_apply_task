@@ -1,7 +1,6 @@
 <template>
   <div class="new-question-form">
-    <!-- <b-alert variant="danger" dismissible v-model="showDismissibleAlert"> -->
-   <b-alert variant="danger" dismissible v-if="this.errors != ''">
+   <b-alert show variant="danger" dismissible v-if="this.errors != ''" class="errors">
       {{errors}}
    </b-alert>
    <b-form @submit="onSubmit" 
@@ -128,4 +127,8 @@
 	.buttons{
 		text-align: center;
 	}
+    .errors{
+      width: 900px;
+      margin: auto;
+    }
 </style>

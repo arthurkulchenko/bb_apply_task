@@ -44,3 +44,18 @@ PlainUser.where(email: nil).each do |user|
   @quote = Faker::Quotes::Shakespeare.hamlet_quote
   Question.create(plain_user: user, title: "#{@quote.slice(0..12)}...", content: @quote)
 end
+
+Question.all.limit(PlainUser.count).each.with_index do |q, i|
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: PlainUser.all[i].id, user_type: "PlainUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: AdminUser.first.id, user_type: "AdminUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: PlainUser.all[i].id, user_type: "PlainUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: AdminUser.first.id, user_type: "AdminUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: PlainUser.all[i].id, user_type: "PlainUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: AdminUser.first.id, user_type: "AdminUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: PlainUser.all[i].id, user_type: "PlainUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: AdminUser.first.id, user_type: "AdminUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: PlainUser.all[i].id, user_type: "PlainUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: AdminUser.first.id, user_type: "AdminUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: PlainUser.all[i].id, user_type: "PlainUser")
+  q.replies.create(content: Faker::TvShows::SouthPark.quote, user_id: AdminUser.first.id, user_type: "AdminUser")
+end

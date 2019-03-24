@@ -1,4 +1,4 @@
-class Review < Post
+class Review < ApplicationRecord
   validates :title, :content, presence: true
 
 

@@ -1,1 +1,8 @@
 <%= render @question, locals: { action_button: false} %>
+<%= render @replies %>
+<hr>
+<new-reply 
+           questionid="<%=@question.id%>" 
+           questionowner="<%=@question.plain_user.email%>">
+</new-reply>
+<hr>
