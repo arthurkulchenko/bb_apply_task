@@ -8,7 +8,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path
     else
-      render :new, notice: @review.errors.full_messages
+      @errors = @review.errors.full_messages
+      render 'index'
     end
   end
 

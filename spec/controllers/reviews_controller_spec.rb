@@ -10,14 +10,6 @@ RSpec.describe ReviewsController, type: :controller do
     end
   end
 
-  describe "GET#new" do
-    before { get :new }
-    it_behaves_like("Responce is OK")
-    it 'assign new review' do
-      expect(assigns(:review)).to be_a_new(Review)
-    end
-  end
-
   describe "POST#create" do
 
     context 'review created' do
@@ -31,7 +23,7 @@ RSpec.describe ReviewsController, type: :controller do
     context 'review NOT created' do
       let(:request_with_error) { post :create, params: { review: attributes_for(:empty_review) } }
       it 'assign new review' do
-        expect{ request_with_error }.to change(Review, :count).by(0)
+        expect{ request_with_error }.to_not change(Review, :count)
       end
 
       let(:request) { post :create, params: { review: attributes_for(:review) } }

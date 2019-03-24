@@ -1,4 +1,8 @@
 <template>
+  <div>
+    <b-alert show variant="danger" dismissible v-if="this.errors != ''" class="errors">
+         {{errors}}
+   </b-alert>
   <div class="new-review-form">
    <b-form @submit="onSubmit" 
            @reset="onReset" 
@@ -46,10 +50,14 @@
       </div>
     </b-form>
   </div>
+</div>
 </template>
 <script type="text/javascript">
 	export default {
     data() {
+      props: {
+        errors: String
+      },
       return {
         form: {
           title: '',

@@ -7,7 +7,7 @@ FactoryBot.define do
     user     {}
 
     trait :plain_user_reply do
-      user { PlainUser.create(title: Faker::TvShows::StarTrek.character) }
+      user { PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email) }
     end
 
     trait :admin_user_reply do

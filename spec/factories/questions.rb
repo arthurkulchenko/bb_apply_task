@@ -2,7 +2,10 @@ FactoryBot.define do
   factory :question do
     title {"#{Faker::GreekPhilosophers.name} says:"}
     content {Faker::GreekPhilosophers.quote}
-    plain_user {PlainUser.create(title: Faker::TvShows::StarTrek.character)}
+
+    trait :with_user do
+      plain_user {PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email)}
+    end
   end
 
   factory :empty_question, class: Question do

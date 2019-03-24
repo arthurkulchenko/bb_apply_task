@@ -36,5 +36,5 @@ en:
   activerecord:
     attributes:
       question:
-        plain_user: "Email"
+        plain_user: "User Email"
 

@@ -10,9 +10,9 @@ class QuestionsController < ApplicationController
 
   def create
     @questions = Question.all
-
     @question = Question.new(processed_params(question_params))
-    if @question.save!
+
+    if @question.save
       redirect_to question_path(@question)
     else
       @errors = @question.errors.full_messages
@@ -23,8 +23,9 @@ class QuestionsController < ApplicationController
   private
 
   def processed_params params
+    # TODO REFACTOR
     @email = params.delete(:email)
-    # TODO FindOrCreateNewPlainUser.new(@email)
+    # TODO @user = FindOrCreateNewPlainUser.new(@email)
     @user = if PlainUser.find_by(email: @email)
       PlainUser.find_by(email: @email)
     else
