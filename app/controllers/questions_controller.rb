@@ -20,10 +20,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    @question = Question.find(params[:id])
+    if @question && @question.update(processed_params(question_params))
+      @question.update!(:sd)
+      redirect_to @question
+    else
+      @errors = @question.errors.full_messages
+      render @question
+    end
+  end
+
   private
 
   def processed_params params
-    # TODO REFACTOR
     @email = params.delete(:email)
     # TODO @user = FindOrCreateNewPlainUser.new(@email)
     @user = if PlainUser.find_by(email: @email)
@@ -37,6 +47,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :content, :email)
+    params.require(:question).permit(:title, :content, :email, replies_attributes: [:id, :content, :user_type, :user_id])
   end
 end

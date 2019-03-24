@@ -5,7 +5,7 @@ class RepliesController < ApplicationController
     @user = find_user_by_email_and_type params
     @reply = @question.replies.new(processed_params(replies_params))
     @reply.user = @user
-    if @reply.save
+    if @reply.save!
       redirect_to @question
     else
       @errors = @reply.errors.full_messages
@@ -21,7 +21,8 @@ class RepliesController < ApplicationController
   end
 
   def find_user_by_email_and_type params
-    @user = params[:reply][:user_type].classify.constantize.find_by(params[:reply].delete(:email))
+    # @user = params[:reply][:user_type].classify.constantize.find_by(params[:reply].delete(:email))
+    @user = params[:reply][:user_type].classify.constantize.find_by(email: params[:reply][:email])
   end
 
   def replies_params

@@ -15,6 +15,6 @@ class Question < ApplicationRecord
   private
 
   def admin_notification
-    AdminUser.recently_online.send_letter  self
+    # AdminUser.recently_online.send_letter  self
   end
 end

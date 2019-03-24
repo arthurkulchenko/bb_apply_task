@@ -54,38 +54,27 @@
 </template>
 <script type="text/javascript">
 	export default {
-    data() {
-      props: {
+    props: {
         errors: String
-      },
+    },
+    data() {
       return {
         form: {
           title: '',
           content: '',
           csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         },
-        // show: true,
-        // authenticity_token
       }
     },
     methods: {
       onSubmit(evt) {
       	evt.preventDefault()
         this.$refs.form.submit()
-        // alert(
-        // 	   JSON.stringify({
-        // 	   	                review: this.form,
-        // 	   	                csrf: this.csrf
-        // 	   	              })
-        // 	 )
       },
       onReset(evt) {
         evt.preventDefault()
         this.form.title = ''
         this.form.content = ''
-        // this.$nextTick(() => {
-        //   this.show = true
-        // })
       }
     }
   }

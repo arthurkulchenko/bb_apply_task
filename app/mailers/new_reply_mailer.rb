@@ -1,0 +1,2 @@
+class NewReplyMailer < ApplicationMailer
+end

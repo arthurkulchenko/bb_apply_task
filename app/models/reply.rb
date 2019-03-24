@@ -16,8 +16,8 @@ class Reply < ApplicationRecord
   private
 
   def user_authorization_check
-    if question
-      ( user != question.plain_user ) && ( user_type == "PlainUser" )
+    if question && ( user_type == "PlainUser" )
+      user != question.plain_user
     end
   end
 

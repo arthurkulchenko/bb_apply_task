@@ -27,6 +27,14 @@
               v-show="false"
             />
           </b-form-group>
+
+          <b-form-group>
+            <b-form-input
+              v-model="form.email"
+              name="reply[email]"
+              v-show="false"
+            />
+          </b-form-group>
     
           <b-form-group
             id="Text"
@@ -61,7 +69,8 @@
 <script type="text/javascript">
   export default{
   	mounted(){
-  		// console.warn("Email is: " + this.$session.get("email"))
+  	  // console.warn("Email is: " + this.$session.get("email"))
+     //  console.warn("this Email is: " + this.form.email)
   	},
     props:{
   		questionid:    String,
@@ -85,6 +94,7 @@
       	e.preventDefault()
         if (this.$session.get('email') != undefined){
           if (this.$session.get('email') == this.questionowner){
+            this.form.email = this.$session.get('email')
             return this.$refs.form.submit()
           }else{
           	this.errors = "You are not the owner of the question, this action allowed only for owners."

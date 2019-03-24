@@ -17,7 +17,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.belongs_to :plain_user
       t.string     :title
       t.text       :content
-      t.integer    :reply_amount
+      t.integer    :reply_amount, default: 0
       t.belongs_to :admin_user
       t.timestamps null: false
     end
