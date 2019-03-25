@@ -25,17 +25,19 @@ class QuestionsController < ApplicationController
   def processed_params params
     @email = params.delete(:email)
     # TODO @user = FindOrCreateNewPlainUser.new(@email)
+    # -------------------------------------------------
     @user = if PlainUser.find_by(email: @email)
       PlainUser.find_by(email: @email)
     else
       PlainUser.create(email: @email)
     end
     params[:plain_user_id] = @user.id
+    # -------------------------------------------------
 
     params
   end
 
   def question_params
-    params.require(:question).permit(:title, :content, :email, replies_attributes: [:id, :content, :user_type, :user_id])
+    params.require(:question).permit(:title, :content, :email)
   end
 end
