@@ -28,19 +28,29 @@ ActiveAdmin.register Question do
     actions
   end
 
+
   form do |f|
     # f.input 'Details' do
     #   # f.input :title
     #   # f.input :published_at, label: 'Publish Post At'
     # end
     f.inputs do
-      f.input :content
+      div do
+        h2 question.content
+        # h2 current_admin_user.email
+        # h2 current_admin_user.class
+      end
+      f.input :plain_user, as: :hidden, value: current_admin_user
+      # f.input :content
       f.semantic_errors *f.object.errors.keys
       # f.input do
       #   # f.input :for => :replies do |a|
       f.has_many :replies, allow_destroy: true, new_record: true do |a|
         a.label 'Reply Content'
         a.input :content
+        # a.input :user, as: :hidden, value: current_admin_user
+        a.input :user_type, as: :hidden, value: "AdminUser"
+        a.input :user_id, as: :hidden, value: current_admin_user.id
       end
     end
     f.semantic_errors
