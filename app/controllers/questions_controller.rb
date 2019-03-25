@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find params[:id]
     @replies = @question.replies
   end
 
@@ -13,21 +13,10 @@ class QuestionsController < ApplicationController
     @question = Question.new(processed_params(question_params))
 
     if @question.save
-      redirect_to question_path(@question)
+      redirect_to question_path @question
     else
       @errors = @question.errors.full_messages
       render "index"
-    end
-  end
-
-  def update
-    @question = Question.find(params[:id])
-    if @question && @question.update(processed_params(question_params))
-      @question.update!(:sd)
-      redirect_to @question
-    else
-      @errors = @question.errors.full_messages
-      render @question
     end
   end
 

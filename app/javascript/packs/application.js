@@ -16,6 +16,8 @@ import NewQuestion from '../components/NewQuestion'
 import NewReply    from '../components/NewReply'
 import Reply       from '../components/Reply'
 
+import NewQuestionMail from '../components/NewQuestionMail'
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     	          'new-question': NewQuestion,
                   'new-reply':    NewReply,
                   'reply':        Reply,
+                  'new-question-mail': NewQuestionMail,
                 },
   }).$mount('#app')
 })

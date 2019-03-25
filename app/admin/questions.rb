@@ -2,7 +2,7 @@ ActiveAdmin.register Question do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :title, :content, :reply, reply_attributes: [:id, :content]
+  permit_params :title, :content, :reply, replies_attributes: [:id, :content, :user_type, :user_id, :_destroy]
   #
   # or
   #
@@ -35,13 +35,15 @@ ActiveAdmin.register Question do
     # end
     f.inputs do
       f.input :content
+      f.semantic_errors *f.object.errors.keys
       # f.input do
       #   # f.input :for => :replies do |a|
-      f.has_many :replies, heading: 'Themes', allow_destroy: true, new_record: true do |a|
+      f.has_many :replies, allow_destroy: true, new_record: true do |a|
         a.label 'Reply Content'
         a.input :content
       end
     end
+    f.semantic_errors
     f.actions
   end
 

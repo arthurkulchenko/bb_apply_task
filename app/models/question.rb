@@ -15,6 +15,7 @@ class Question < ApplicationRecord
   private
 
   def admin_notification
-    # AdminUser.recently_online.send_letter  self
+    SendNewQuestionNotificationJob.perform_now title, content
   end
+
 end
