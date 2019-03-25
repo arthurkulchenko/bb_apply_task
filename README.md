@@ -9,10 +9,10 @@ Feedback form for two type of users.
 
 2. For the admin user.
  * ✅ ~Authentication required.~
- * Email notification in case new question to support appears.
+ * ✅ ~Email notification in case new question to support appears.~
  * Dashboard
-   - Unreaded messages interface notification.
-   - Ability to choose the question. And be able to respond.
+   ✅ ~- Unreaded messages interface notification.~
+   ✅ ~- Ability to choose the question. And be able to respond.~
 
 ## README
 

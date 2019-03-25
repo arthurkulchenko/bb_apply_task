@@ -20,7 +20,7 @@ AdminUser.create!(
   )
 end
 
-5.times do
+Question.count.times do
   PlainUser.create(
     title: Faker::TvShows::HowIMetYourMother.character,
     email: Faker::Internet.email
