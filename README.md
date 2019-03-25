@@ -1,4 +1,18 @@
-TODO list
+### Spended time & quite inaccurate retrospective:
+
+* 14 mar (few hours codding ~ 2) - project created/determinig app architecture 
+* 19 mar (few hours codding ~ 2-3) - addind models/tests
+* 20 mar - adding controllers
+* 21 mar - migrating/install vue
+* 22 mar - ... added vue pages (P.S. not sure)
+* 24 mar - controller tests/question notification
+* 25 mar - admin dashboard/reply notification
+
+### instead conclusion
+A lot of refactoring is requirered, code have been writen in lil rush due to incorrect task time estimation.
+Basic fuctions present, test coverage leaves a lot to be desired. Efficiency was sacrified for the functionality.
+
+~TODO list~
 ---------
 Feedback form for two type of users.
 
@@ -10,7 +24,7 @@ Feedback form for two type of users.
 2. For the admin user.
  * ✅ ~Authentication required.~
  * ✅ ~Email notification in case new question to support appears.~
- * Dashboard
+ ✅ ~* Dashboard~
    ✅ ~- Unreaded messages interface notification.~
    ✅ ~- Ability to choose the question. And be able to respond.~
 
