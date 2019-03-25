@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 2019_03_22_123144) do
 
   create_table "questions", force: :cascade do |t|
     t.bigint "plain_user_id"
+    t.boolean "solved", default: false
     t.string "title"
     t.text "content"
-    t.integer "reply_amount"
+    t.integer "reply_amount", default: 0
     t.bigint "admin_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -15,6 +15,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
   def change
     create_table :questions do |t|
       t.belongs_to :plain_user
+      t.boolean    :solved, default: false
       t.string     :title
       t.text       :content
       t.integer    :reply_amount, default: 0
