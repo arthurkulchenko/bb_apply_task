@@ -8,7 +8,7 @@
 * 24 mar - controller tests/question notification
 * 25 mar - admin dashboard/reply notification
 
-### instead conclusion
+### instead of conclusion
 A lot of refactoring is requirered, code have been writen in lil rush due to incorrect task time estimation.
 Basic fuctions present, test coverage leaves a lot to be desired. Efficiency was sacrified for the functionality.
 
