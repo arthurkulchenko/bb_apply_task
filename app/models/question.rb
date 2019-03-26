@@ -2,7 +2,6 @@ class Question < ApplicationRecord
   validates :title, :content, presence: true
   belongs_to :plain_user
   has_many :replies
-  accepts_nested_attributes_for :replies, allow_destroy: true
 
   after_create :admin_notification
 

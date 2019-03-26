@@ -3,6 +3,9 @@
   	<b-alert show variant="danger" dismissible v-if="this.errors != ''" class="errors">
   			 {{errors}}
    </b-alert>
+   <b-alert show variant="danger" dismissible v-if="this.servererrors != ''" class="errors server">
+         {{servererrors}}
+   </b-alert>
 	<div class="reply">
 	  <b-card class="PlainUser">
      
@@ -73,8 +76,9 @@
      //  console.warn("this Email is: " + this.form.email)
   	},
     props:{
-  		questionid:    String,
-  		questionowner: String,
+      servererrors:  String,
+  		questionid:  String,
+  	  questionowner: String,
   	},
   	data(){ 
   	  return { 

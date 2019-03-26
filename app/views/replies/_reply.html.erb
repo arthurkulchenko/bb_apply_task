@@ -1,1 +1,3 @@
-<reply content="<%= reply.content %>" user_type="<%=reply.user_type%>"></reply>
+<%if reply.content%>
+  <reply content="<%= reply.content %>" user_type="<%=reply.user_type%>"></reply>
+<%end%>

@@ -11,7 +11,8 @@
         <p id="replies-paragraph">replies: <span id="replies">{{replies}}</span></p>
         <p id="date">{{date}}</p>
         <b-button :href="`/questions/${id}`" 
-                  variant="primary">
+                  variant="primary"
+                  v-show="show_button=='true'">
                 Show more...
         </b-button>
       </b-card>
@@ -26,7 +27,7 @@
 		  content: String,
           date: String,
           replies: String,
-          show_button: Boolean,
+          show_button: String,
 		},
 		data(){return{}}
 	}

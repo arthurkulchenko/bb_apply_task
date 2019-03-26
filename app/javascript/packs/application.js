@@ -15,6 +15,7 @@ import Question    from '../components/Question'
 import NewQuestion from '../components/NewQuestion'
 import NewReply    from '../components/NewReply'
 import Reply       from '../components/Reply'
+import Errors       from '../components/Errors'
 
 import NewQuestionMail from '../components/NewQuestionMail'
 
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   'new-reply':    NewReply,
                   'reply':        Reply,
                   'new-question-mail': NewQuestionMail,
+                  'errors': Errors,
                 },
   }).$mount('#app')
 })

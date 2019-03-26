@@ -1,11 +1,13 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
+    @action_button = true
   end
 
   def show
     @question = Question.find params[:id]
     @replies = @question.replies
+    @action_button = false
   end
 
   def create
@@ -23,17 +25,8 @@ class QuestionsController < ApplicationController
   private
 
   def processed_params params
-    @email = params.delete(:email)
-    # TODO @user = FindOrCreateNewPlainUser.new(@email)
-    # -------------------------------------------------
-    @user = if PlainUser.find_by(email: @email)
-      PlainUser.find_by(email: @email)
-    else
-      PlainUser.create(email: @email)
-    end
+    @user = PlainUser.find_or_create_by(email: params.delete(:email))
     params[:plain_user_id] = @user.id
-    # -------------------------------------------------
-
     params
   end
 
