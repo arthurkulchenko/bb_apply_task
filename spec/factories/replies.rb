@@ -11,7 +11,7 @@ FactoryBot.define do
     trait :correct_reply do
       user_type {"PlainUser"}
       user_id { PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email).id }
-      question { Question.create(user: user) }
+      question { Question.create(plain_user: user) }
     end
 
     trait :admin_user_reply do
