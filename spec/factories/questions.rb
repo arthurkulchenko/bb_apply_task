@@ -6,6 +6,10 @@ FactoryBot.define do
     trait :with_user do
       plain_user {PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email)}
     end
+
+    trait :invalid_question do
+      plain_user {"my string"}
+    end
   end
 
   factory :empty_question, class: Question do

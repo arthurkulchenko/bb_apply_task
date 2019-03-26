@@ -1,13 +1,17 @@
 FactoryBot.define do
   # let(:question){ create(:question) }
   factory :reply do
-    question { question }
-    # question { question }
     content  { Faker::TvShows::Friends.quote }
-    user     {}
 
     trait :plain_user_reply do
-      user { PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email) }
+      user_type {"PlainUser"}
+      user_id { PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email).id }
+    end
+
+    trait :correct_reply do
+      user_type {"PlainUser"}
+      user_id { PlainUser.create(title: Faker::TvShows::StarTrek.character, email: Faker::Internet.email).id }
+      question { Question.create(user: user) }
     end
 
     trait :admin_user_reply do

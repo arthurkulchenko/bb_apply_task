@@ -11,16 +11,17 @@ RSpec.describe Reply, type: :model do
   let(:another_user){ create(:plain_user, :with_email)}
   let(:question){create(:question, plain_user: user )}
 
-  let(:replies){create_list(:reply, 5, question: question, user: user)}
+  let!(:replies){create_list(:reply, 5, question: question, user: user)}
   let(:reply){create(:reply, question: question, user: user)}
+  let(:test_string){"shoulda-matchers test string"}
 
-  # it { expect(reply).to callback(:update_question).after(:create) }
-  it 'Reply#update_question updates questions reply_amount' do
-    expect(replies[0].question).to eq(question)
-    expect(question.reply_amount).to eq(5)
-    question.replies.create(content: 'hello', user: user)
-    expect(question.reply_amount).to eq(6)
-  end
+  # it 'Reply#update_question updates questions reply_amount' do
+  #   # expect(replies[0].question).to eq(question)
+  #   # expect(question.reply_amount).to eq(5)
+  #   question.replies.create(content: 'hello', user: user)
+  #   expect(question.replies.count).to eq(6)
+  #   expect(question.reply_amount).to eq(6)
+  # end
 
   it 'should validate new questions reply utensils to user by email' do
     expect(question.plain_user).to eq(user)
@@ -32,7 +33,7 @@ RSpec.describe Reply, type: :model do
     expect{question.replies.create(content: 'hello', user: another_user)}.to_not change(Reply, :count)
   end
 
-  it { should validate_inclusion_of(:user_type).in_array(%w(PlainUser AdminUser)) }
+  it { should validate_inclusion_of(:user_type).in_array(%w(PlainUser AdminUser)).with_message("#{test_string} is wrong value") }
   # context 'with valid user_type value' do
   #   it 'pass right value' do
   #     expect{question.replies.create(content: 'hello', user_id: user.id, user_type: 'PlainUser')}.to change(Reply, :count).by(1)

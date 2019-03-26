@@ -1,33 +1,33 @@
 class QuestionsController < ApplicationController
+  before_action :create_question, only: [:create]
+  before_action :questions_load, only: [:index, :create]
+
   def index
-    @questions = Question.all
     @action_button = true
   end
 
   def show
     @question = Question.find params[:id]
-    @replies = @question.replies
     @action_button = false
   end
 
   def create
-    @questions = Question.all
-    @question = Question.new(processed_params(question_params))
-
-    if @question.save
-      redirect_to question_path @question
+    if @question_wrapper.errors.empty?
+      redirect_to question_path(@question_wrapper.question)
     else
-      @errors = @question.errors.full_messages
+      @errors = @question_wrapper.errors
       render "index"
     end
   end
 
   private
 
-  def processed_params params
-    @user = PlainUser.find_or_create_by(email: params.delete(:email))
-    params[:plain_user_id] = @user.id
-    params
+  def create_question
+    @question_wrapper = InitializeAndCreateQuestion.new(params).perform
+  end
+
+  def questions_load
+    @questions = Question.all
   end
 
   def question_params

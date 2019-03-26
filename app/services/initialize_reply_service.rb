@@ -15,8 +15,9 @@ class InitializeReplyService
   end
 
   def perform
-    instantiate_reply
-    if validate
+    instantiate
+    validate
+    if errors.empty?
       self.reply.save
       notify
       update_question
@@ -56,7 +57,7 @@ class InitializeReplyService
     }
   end
 
-  def instantiate_reply
+  def instantiate
     self.reply = question.replies.new(reply_attributes)
   end
 end
