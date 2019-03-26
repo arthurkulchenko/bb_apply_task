@@ -32,7 +32,7 @@ class InitializeReplyService
     if !question.admin_user_id? && ( reply.user_type == 'AdminUser' )
       self.question.update(admin_user_id: user_id, reply_amount: "#{@replies_amount}")
     end
-    # CHECK do not update question if passet integer
+    # CHECK do not update question if passed integer
     # self.question.update(reply_amount: @reply_amount)
     self.question.update(reply_amount: "#{@replies_amount}")
   end
